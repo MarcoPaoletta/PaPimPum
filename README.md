@@ -9,13 +9,11 @@
 
 ---
 # Demostracion
-* LOBBY:
-  
-* GAMEPLAY:
-
-* SETTINGS:
-
-* AUDIO SETTINGS:
+<p align="center">
+ <img align= center height=300px widht=300px src=https://github.com/MarcoPaoletta/PaPimPum/blob/master/lobby.png>
+ <img align= center height=300px widht=300px src=https://github.com/MarcoPaoletta/PaPimPum/blob/master/settings.png> 
+ <img align= center height=300px widht=300px src=https://github.com/MarcoPaoletta/PaPimPum/blob/master/audio_settings.png>
+<p/>
 
 ---
 
