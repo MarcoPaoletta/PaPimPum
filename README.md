@@ -8,7 +8,7 @@
 * Al ser el primer juego utilizando esta mecanica, se pueden experimentar algunos errores
 
 ---
-# Demostracion
+<h1 align=center>Demostracion<h1/>
 <p align="center">
  <img align= center height=300px widht=300px src=https://github.com/MarcoPaoletta/PaPimPum/blob/master/lobby.png>
  <img align= center height=300px widht=300px src=https://github.com/MarcoPaoletta/PaPimPum/blob/master/settings.png> 
