@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/main/hit.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/main/scored.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/main/3.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/main/1.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/main/2.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/main/bonus.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/main/gem.wav" type="AudioStream" id=7]
+
+[node name="SFX" type="Node"]
+
+[node name="Button1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Sound"
+
+[node name="Button2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Sound"
+
+[node name="Button3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Sound"
+
+[node name="Scored" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Sound"
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "Sound"
+
+[node name="Bonus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.0
+bus = "Sound"
+
+[node name="Gem" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "Sound"

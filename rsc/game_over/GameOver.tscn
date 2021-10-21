@@ -1,0 +1,152 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://rsc/game_over/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/ARCO for OSX.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/game_over/lobby.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/game_over/play_again.wav" type="AudioStream" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.745098, 0.376471, 0.376471, 1 )
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+shadow_size = 10
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+outline_size = 4
+outline_color = Color( 0.678431, 0.207843, 0.847059, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+outline_size = 2
+outline_color = Color( 0.278431, 0.792157, 0.792157, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+outline_size = 2
+outline_color = Color( 0.972549, 0.152941, 0.384314, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+outline_size = 2
+outline_color = Color( 0.45098, 0.694118, 0.152941, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=6]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("P:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -550, -171.5 ), Vector2( 22, 135 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("P:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -228.0
+margin_top = -300.0
+margin_right = 228.0
+margin_bottom = 112.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="P"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="P/CenterContainer"]
+margin_left = 84.0
+margin_top = 43.0
+margin_right = 371.0
+margin_bottom = 368.0
+custom_constants/separation = 40
+
+[node name="Score" type="Label" parent="P/CenterContainer/VBoxContainer"]
+margin_right = 287.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 2 )
+text = "SCORE = "
+
+[node name="HighScore" type="Label" parent="P/CenterContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 287.0
+margin_bottom = 147.0
+custom_fonts/font = SubResource( 3 )
+text = "HIGHSCORE = "
+
+[node name="Again" type="Button" parent="P/CenterContainer/VBoxContainer"]
+margin_top = 187.0
+margin_right = 287.0
+margin_bottom = 236.0
+custom_fonts/font = SubResource( 4 )
+text = "PLAY AGAIN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lobby" type="Button" parent="P/CenterContainer/VBoxContainer"]
+margin_top = 276.0
+margin_right = 287.0
+margin_bottom = 325.0
+custom_fonts/font = SubResource( 5 )
+text = "LOBBY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "entered"
+anims/entered = SubResource( 6 )
+
+[node name="Again" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Lobby" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+[connection signal="pressed" from="P/CenterContainer/VBoxContainer/Again" to="." method="_on_Again_pressed"]
+[connection signal="pressed" from="P/CenterContainer/VBoxContainer/Lobby" to="." method="_on_Lobby_pressed"]

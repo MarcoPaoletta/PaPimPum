@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/scored.ogg-6564d466e62d9458ce3133c4c66ce46f.oggstr"
+
+[deps]
+
+source_file="res://assets/main/scored.ogg"
+dest_files=[ "res://.import/scored.ogg-6564d466e62d9458ce3133c4c66ce46f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,72 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://assets/elements/c.png" type="Texture" id=1]
+[ext_resource path="res://rsc/coin/Coin.gd" type="Script" id=2]
+[ext_resource path="res://assets/elements/silver/silver_coin_hexagon_6@2x.png" type="Texture" id=3]
+[ext_resource path="res://assets/elements/gold/gold_coin_round_star_2@2x.png" type="Texture" id=4]
+[ext_resource path="res://assets/elements/gold/gold_coin_round_star_6@2x.png" type="Texture" id=5]
+[ext_resource path="res://assets/elements/silver/silver_coin_hexagon_4@2x.png" type="Texture" id=6]
+[ext_resource path="res://assets/elements/blue/blue_coin_round_blank_1@2x.png" type="Texture" id=7]
+[ext_resource path="res://assets/elements/silver/silver_coin_hexagon_5@2x.png" type="Texture" id=8]
+[ext_resource path="res://assets/elements/blue/blue_coin_round_blank_2@2x.png" type="Texture" id=9]
+[ext_resource path="res://assets/elements/blue/blue_coin_round_blank_4@2x.png" type="Texture" id=10]
+[ext_resource path="res://assets/elements/blue/blue_coin_round_blank_5@2x.png" type="Texture" id=11]
+[ext_resource path="res://assets/elements/blue/blue_coin_round_blank_3@2x.png" type="Texture" id=12]
+[ext_resource path="res://assets/elements/blue/blue_coin_round_blank_6@2x.png" type="Texture" id=13]
+[ext_resource path="res://assets/elements/silver/silver_coin_hexagon_1@2x.png" type="Texture" id=14]
+[ext_resource path="res://assets/elements/silver/silver_coin_hexagon_3@2x.png" type="Texture" id=15]
+[ext_resource path="res://assets/elements/silver/silver_coin_hexagon_2@2x.png" type="Texture" id=16]
+[ext_resource path="res://assets/elements/gold/gold_coin_round_star_1@2x.png" type="Texture" id=17]
+[ext_resource path="res://assets/elements/gold/gold_coin_round_star_3@2x.png" type="Texture" id=18]
+[ext_resource path="res://assets/elements/gold/gold_coin_round_star_4@2x.png" type="Texture" id=19]
+[ext_resource path="res://assets/elements/gold/gold_coin_round_star_5@2x.png" type="Texture" id=20]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 35, 35 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "blue",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 4 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "gold",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "silver",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "save",
+"speed": 1.0
+} ]
+
+[node name="Coin" type="Area2D" groups=[
+"c",
+]]
+position = Vector2( 241.143, -28.1555 )
+collision_mask = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Animation" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.7, 0.7 )
+frames = SubResource( 2 )
+animation = "save"
+playing = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[connection signal="area_entered" from="." to="." method="_on_Coin_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_Coin_area_exited"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

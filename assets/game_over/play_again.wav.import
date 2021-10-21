@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/play_again.wav-2ce4dff9657a79ce721a3175cf8d5dcf.sample"
+
+[deps]
+
+source_file="res://assets/game_over/play_again.wav"
+dest_files=[ "res://.import/play_again.wav-2ce4dff9657a79ce721a3175cf8d5dcf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

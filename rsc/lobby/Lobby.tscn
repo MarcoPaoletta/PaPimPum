@@ -1,0 +1,130 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/lobby/title.png" type="Texture" id=1]
+[ext_resource path="res://assets/lobby/play_n.png" type="Texture" id=2]
+[ext_resource path="res://assets/lobby/play_p.png" type="Texture" id=3]
+[ext_resource path="res://assets/lobby/settings_n.png" type="Texture" id=4]
+[ext_resource path="res://assets/lobby/settings_p.png" type="Texture" id=5]
+[ext_resource path="res://rsc/bg/Bg.tscn" type="PackedScene" id=6]
+[ext_resource path="res://rsc/lobby/Lobby.gd" type="Script" id=7]
+[ext_resource path="res://rsc/fade/Fade.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/lobby/play.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/lobby/settings.wav" type="AudioStream" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ready"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer:custom_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/Buttons:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 767.99 ), Vector2( 0, 408 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer/Title:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -480 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Lobby" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" parent="." instance=ExtResource( 6 )]
+color = Color( 0.956863, 0.980392, 0.537255, 1 )
+
+[node name="Fade" parent="." instance=ExtResource( 8 )]
+COLOR = "black"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = -334.0
+margin_right = 240.0
+margin_bottom = 334.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 404.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Title"]
+margin_left = 60.0
+margin_right = 420.0
+margin_bottom = 404.0
+texture = ExtResource( 1 )
+
+[node name="Buttons" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 408.0
+margin_right = 480.0
+margin_bottom = 668.0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer/Buttons"]
+margin_right = 480.0
+margin_bottom = 260.0
+custom_constants/separation = 20
+
+[node name="Play" type="TextureButton" parent="VBoxContainer/Buttons/VBoxContainer"]
+margin_right = 230.0
+margin_bottom = 260.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+
+[node name="Settings" type="TextureButton" parent="VBoxContainer/Buttons/VBoxContainer"]
+margin_left = 250.0
+margin_right = 480.0
+margin_bottom = 260.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+
+[node name="Play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "Sound"
+
+[node name="Settings" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "Sound"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "ready"
+anims/ready = SubResource( 1 )
+
+[connection signal="pressed" from="VBoxContainer/Buttons/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
